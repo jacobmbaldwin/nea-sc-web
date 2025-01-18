@@ -11,5 +11,6 @@ import { HeaderBarComponent } from "./components/header-bar/header-bar.component
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'NEA Soccer Club';
+
+  
 }

@@ -4,3 +4,7 @@ body {
     margin: 0;
     font-family: "Bebas Neue", sans-serif;
 }
+
+.page {
+    margin: 2rem 5%;
+}

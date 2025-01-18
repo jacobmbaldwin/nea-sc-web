@@ -1,0 +1,30 @@
+header {
+    display: flex;
+    flex-direction: column;
+}
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #221F1F;
+    height: 50px;
+}
+
+.navlinks a {
+    margin: 0 1rem;
+    color: #fff;
+    font-weight: 400;
+    font-size: 1.25em;
+    text-decoration: none;
+}
+.navLinks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 3rem;
+}
+
+.navLinks a:hover {
+    cursor: pointer;
+    color: #bdbdbd
+}
