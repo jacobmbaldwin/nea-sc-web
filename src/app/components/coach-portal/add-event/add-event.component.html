@@ -1,0 +1,11 @@
+
+<h2>Add to Upcoming Events</h2>
+<form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+
+    <input formControlName="date" placeholder="Date" required />
+    <input formControlName="venue" placeholder="Venue" required />
+    <input formControlName="city" placeholder="City" required />
+    <input formControlName="time" placeholder="Time" required />
+    <button type="submit">Add Event</button>
+
+</form>

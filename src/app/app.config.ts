@@ -11,5 +11,25 @@ import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { getPerformance, providePerformance } from '@angular/fire/performance';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(), provideFirebaseApp(() => initializeApp({"projectId":"nea-soccer-club","appId":"1:758793269053:web:f75b33ca373bebeee9df54","databaseURL":"https://nea-soccer-club-default-rtdb.firebaseio.com","storageBucket":"nea-soccer-club.firebasestorage.app","apiKey":"AIzaSyAOWPVM797P5Y67kHVUcMJ13wqkqneEEhY","authDomain":"nea-soccer-club.firebaseapp.com","messagingSenderId":"758793269053","measurementId":"G-9LG4NF34TM"})), provideAuth(() => getAuth()), provideAnalytics(() => getAnalytics()), ScreenTrackingService, UserTrackingService, provideFirestore(() => getFirestore()), provideDatabase(() => getDatabase()), providePerformance(() => getPerformance())]
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }), 
+    provideRouter(routes), 
+    provideClientHydration(), 
+    provideFirebaseApp(() => 
+      initializeApp({
+        "projectId":"nea-soccer-club",
+        "appId":"1:758793269053:web:f75b33ca373bebeee9df54",
+        "databaseURL":"https://nea-soccer-club-default-rtdb.firebaseio.com",
+        "storageBucket":"nea-soccer-club.firebasestorage.app",
+        "apiKey":"AIzaSyAOWPVM797P5Y67kHVUcMJ13wqkqneEEhY",
+        "authDomain":"nea-soccer-club.firebaseapp.com",
+        "messagingSenderId":"758793269053",
+        "measurementId":"G-9LG4NF34TM"})), 
+        provideAuth(() => getAuth()), 
+        provideAnalytics(() => getAnalytics()), 
+        ScreenTrackingService, 
+        UserTrackingService, 
+        provideFirestore(() => getFirestore()), 
+        provideDatabase(() => getDatabase()), 
+        providePerformance(() => getPerformance())]
 };
