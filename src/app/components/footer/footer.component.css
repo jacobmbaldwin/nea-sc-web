@@ -9,8 +9,6 @@ footer {
     justify-content: end;
     gap: 1rem;
     align-items: center;
-    position: absolute;
-    bottom: 0;
 }
 
 .footerLinks {
