@@ -1,28 +1,30 @@
 header {
     display: flex;
-    flex-direction: column;
     background-color: #221F1F;
+    justify-content: center;
+    position: relative;
 }
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     height: 100px;
-    margin: 0 auto;
+    width: 90%;
+    max-width: 1440px;
+    position: relative;
 }
 
-.navlinks a {
-    margin: 0 1rem;
+.navLinks a {
     color: #fff;
     font-weight: 400;
-    font-size: 1.25em;
+    font-size: 25px;
     text-decoration: none;
 }
 .navLinks {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 3rem;
+    gap: 2rem;
 }
 
 .navLinks a:hover {
@@ -31,7 +33,15 @@ nav {
 }
 
 nav img {
-    margin-top: 40%;
-    margin-left: 3rem;
-    margin-right: 3rem;
+    position: absolute;
+    top: 9px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.coachPortal {
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
 }
