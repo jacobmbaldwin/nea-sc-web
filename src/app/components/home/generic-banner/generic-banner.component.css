@@ -1,0 +1,29 @@
+button {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.5rem;
+    padding: 1.5rem 2rem;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.banner-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.banner-text h3 {
+    font-size: 50px;
+}
