@@ -1,13 +1,14 @@
 header {
     display: flex;
     flex-direction: column;
+    background-color: #221F1F;
 }
 nav {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    background-color: #221F1F;
-    height: 50px;
+    height: 100px;
+    margin: 0 auto;
 }
 
 .navlinks a {
@@ -27,4 +28,10 @@ nav {
 .navLinks a:hover {
     cursor: pointer;
     color: #bdbdbd
+}
+
+nav img {
+    margin-top: 40%;
+    margin-left: 3rem;
+    margin-right: 3rem;
 }

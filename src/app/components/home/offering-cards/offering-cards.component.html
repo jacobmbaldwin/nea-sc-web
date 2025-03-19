@@ -1,0 +1,18 @@
+<div class="offerings">
+    <h2>What We Offer</h2>
+
+    <div class="cards">
+        @for (offering of offerings; track $index) {
+            <mat-card>
+                <img [src]="offering.image" [alt]="offering.description"/>
+                <mat-card-title>
+                    <h3>{{offering.title}}</h3>
+                </mat-card-title>
+                <mat-card-content>
+                    <p>{{offering.description}}</p>
+                    <button mat-raised-button color="primary" (click)="onMoreDetails(offering.link)">More Details</button>
+                </mat-card-content>
+            </mat-card> 
+        }
+    </div>
+</div>
