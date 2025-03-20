@@ -44,4 +44,5 @@ nav img {
     right: 2rem;
     top: 50%;
     transform: translateY(-50%);
+    font-size: 20px;
 }
