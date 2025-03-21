@@ -1,0 +1,23 @@
+<mat-card class="calendar-container">
+    <mat-toolbar>
+      <button mat-icon-button (click)="prevMonth()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <h2>{{ monthName }} {{ year }}</h2>
+      <button mat-icon-button (click)="nextMonth()">
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+    </mat-toolbar>
+  
+    <div class="calendar-grid">
+      <div *ngFor="let day of weekDays" class="calendar-header">{{ day }}</div>
+      
+      <div *ngFor="let day of days" class="calendar-day" [ngClass]="{ 'prev-month': day.isPrevMonth, 'next-month': day.isNextMonth, 'current-month': day.isCurrentMonth }" [class.empty]="!day.date">
+        <span *ngIf="day.date">{{ day.date }}</span>
+        <mat-card *ngFor="let event of day.events" class="event-card">
+          {{ event.title }}
+        </mat-card>
+      </div>
+    </div>
+  </mat-card>
+  
