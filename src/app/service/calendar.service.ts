@@ -12,7 +12,7 @@ export class CalendarService {
     { day: 20, month: 3, year: 2025, title: 'Practice', location: 'Field' },
     { day: 20, month: 3, year: 2025, title: 'Friendly Match', location: 'Stadium' },
     { day: 28, month: 2, year: 2025, title: 'Leap Year Party', location: 'Club' }, // Example previous month event
-    { day: 3, month: 4, year: 2025, title: 'April Fool’s Joke', location: 'Office' } // Example next month event
+    { day: 1, month: 4, year: 2025, time: '6pm', title: 'April Fool’s Joke', location: 'Office' } // Example next month event
   ];
 
   getEvents(month: number, year: number): Observable<EventModel[]> {

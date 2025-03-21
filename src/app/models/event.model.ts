@@ -5,4 +5,5 @@ export interface EventModel {
     title: string;
     description?: string;
     location: string;
+    time?: string;
 }

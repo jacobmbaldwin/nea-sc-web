@@ -1,0 +1,42 @@
+.dialogWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    gap: 1rem;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: baseline;
+    width: 100%;
+    gap: 1rem;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #000;
+    margin: 0;
+}
+
+h1 {
+    background-color: #CF2031;
+    color: #fff;
+    width: 100%;
+    /* padding: 2rem 4rem; */
+}
+
+h2 {
+    color: #CF2031;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+button {
+    margin-top: 1rem;
+}

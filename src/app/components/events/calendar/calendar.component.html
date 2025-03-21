@@ -14,7 +14,7 @@
       
       <div *ngFor="let day of days" class="calendar-day" [ngClass]="{ 'prev-month': day.isPrevMonth, 'next-month': day.isNextMonth, 'current-month': day.isCurrentMonth }" [class.empty]="!day.date">
         <span *ngIf="day.date">{{ day.date }}</span>
-        <mat-card *ngFor="let event of day.events" class="event-card">
+        <mat-card *ngFor="let event of day.events" class="event-card" (click)="onOpenEvent(event)">
           {{ event.title }}
         </mat-card>
       </div>

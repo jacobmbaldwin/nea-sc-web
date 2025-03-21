@@ -6,6 +6,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { EventModel } from '../../../models/event.model';
+import { MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import { EventDialogComponent } from '../../../dialogs/event-dialog/event-dialog.component';
 
 interface CalendarDay {
   date: number;
@@ -18,7 +22,7 @@ interface CalendarDay {
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule, CommonModule],
+  imports: [MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule, CommonModule, MatDialogModule],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.css'
 })
@@ -29,13 +33,16 @@ export class CalendarComponent implements OnInit {
   days: CalendarDay[] = [];
   weekDays: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-  constructor(private calendarService: CalendarService) {}
+  constructor(
+    private calendarService: CalendarService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit() {
     this.updateCalendar();
   }
 
-  updateCalendar() {
+  protected updateCalendar() {
     const firstDayOfMonth = new Date(this.year, this.month - 1, 1);
     const lastDayOfMonth = new Date(this.year, this.month, 0);
     const firstDayIndex = firstDayOfMonth.getDay();
@@ -81,7 +88,7 @@ export class CalendarComponent implements OnInit {
     this.days = tempDays;
   }
 
-  assignEvents(days: CalendarDay[], events: EventModel[], isCurrent = false, isPrev = false, isNext = false) {
+  protected assignEvents(days: CalendarDay[], events: EventModel[], isCurrent = false, isPrev = false, isNext = false) {
     events.forEach(event => {
       const day = days.find(d => d.date === event.day && (
         (isCurrent && d.isCurrentMonth) ||
@@ -92,7 +99,7 @@ export class CalendarComponent implements OnInit {
     });
   }
 
-  prevMonth() {
+  protected prevMonth() {
     if (this.month === 1) {
       this.month = 12;
       this.year--;
@@ -102,7 +109,7 @@ export class CalendarComponent implements OnInit {
     this.updateCalendar();
   }
 
-  nextMonth() {
+  protected nextMonth() {
     if (this.month === 12) {
       this.month = 1;
       this.year++;
@@ -110,5 +117,20 @@ export class CalendarComponent implements OnInit {
       this.month++;
     }
     this.updateCalendar();
+  }
+
+  protected onOpenEvent(event: EventModel) {
+    
+    const config: MatDialogConfig = {
+      data: event,
+      width: '90%',
+      maxWidth: '500px',
+      disableClose: false,
+      autoFocus: true,
+      hasBackdrop: true
+    };
+
+    this.dialog.open(EventDialogComponent, config);
+    
   }
 }
