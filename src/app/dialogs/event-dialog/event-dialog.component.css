@@ -1,10 +1,17 @@
 .dialogWrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
     gap: 1rem;
+    padding-bottom: 2rem
+}
+
+.dialogWrapper>div {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
 }
 
 .row {
@@ -28,7 +35,10 @@ h1 {
     background-color: #CF2031;
     color: #fff;
     width: 100%;
-    /* padding: 2rem 4rem; */
+    margin: 0;
+    text-align: center;
+    padding-block: 1rem;
+    letter-spacing: 1px;
 }
 
 h2 {
@@ -37,6 +47,17 @@ h2 {
     margin: 0;
 }
 
-button {
-    margin-top: 1rem;
+mat-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: #e1e1e1;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 50%;
+    transition: color .3s ease-in-out;
+}
+
+mat-icon:hover {
+    color: #FFF
 }

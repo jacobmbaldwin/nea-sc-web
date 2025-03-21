@@ -1,25 +1,26 @@
 <div class="dialogWrapper">
     <h1>Event Details</h1>
-    <div class="row">
-        <h2>Title:</h2> <p>{{data.title}}</p>
-    </div>
-    <div class="row">
-        <h2>Location:</h2> <p>{{data.location}}</p>
+    <div>
+        <div class="row">
+            <h2>Title:</h2> <p>{{data.title}}</p>
+        </div>
+        <div class="row">
+            <h2>Location:</h2> <p>{{data.location}}</p>
+        </div>
+        @if (data.description) {
+            <div class="row">
+                <h2>Description:</h2> <p>{{data.description}}</p>
+            </div>
+        }
+        <div class="row">
+            <h2>Date:</h2> <p>{{data.month}}/{{data.day}}/{{data.year}}</p>
+        </div>
+        @if (data.time) {
+            <div class="row">
+                <h2>Time:</h2> <p>{{data.time}}</p>
+            </div>
+        }
     </div>
 
-    @if (data.description) {
-        <div class="row">
-            <h2>Description:</h2> <p>{{data.description}}</p>
-        </div>
-    }
-    <div class="row">
-        <h2>Date:</h2> <p>{{data.month}}/{{data.day}}/{{data.year}}</p>
-    </div>   
-    @if (data.time) {
-        <div class="row">
-            <h2>Time:</h2> <p>{{data.time}}</p>
-        </div>
-    }
-
-    <button mat-raised-button color="primary" (click)="onClose()">Close</button>
+    <mat-icon (click)="onClose()">close</mat-icon>
 </div>

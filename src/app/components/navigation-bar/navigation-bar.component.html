@@ -1,21 +1,27 @@
 <header>
+    
     <nav>
-            <div class="navLinks">
-                <a routerLink="/home">Home</a>
-                <a routerLink="/about">About</a>
-                <a routerLink="/documents">Resources</a>
-                <a routerLink="/calendar">Events</a>
-            </div>
-                
-            <a routerLink="/home"><img src="NEASC_logo.png" width="175px"/></a>
-            
-            <div class="navLinks">
-                <a href="https://runningthreads.net/pages/nea-soccer-club" target="_blank">Store</a>
-                <a routerLink="/faq">FAQ</a>
-                <a routerLink="/scholarships">Scholarships</a>
-            </div>
+        <div class="menuButton">
+            <button mat-icon-button [matMenuTriggerFor]="menu" (click)="toggleMenu()">
+                <mat-icon class="menu-icon" [class]="{'rotate-icon': isMenuOpen}">{{ isMenuOpen ? 'close' : 'menu' }}</mat-icon>
+            </button>
+        </div>
+            <mat-menu class="navMenu" #menu="matMenu" (closed)="toggleMenu()">
+                <button mat-menu-item [routerLink]="'/home'">Home</button>
+                <button mat-menu-item [routerLink]="'/about'">About</button>
+                <button mat-menu-item [routerLink]="'/documents'" [matMenuTriggerFor]="resources">Resources</button>
+                <button mat-menu-item [routerLink]="'/calendar'">Events</button>
+                <a mat-menu-item href="https://runningthreads.net/pages/nea-soccer-club" target="_blank">Store</a>
+                <button mat-menu-item [routerLink]="'/faq'">FAQ</button>
+            </mat-menu>
 
-            
+            <mat-menu #resources="matMenu">
+                <button mat-menu-item [routerLink]="'/documents'">Documents</button>
+                <button mat-menu-item [routerLink]="'/scholarships'">Scholarships</button>
+            </mat-menu>
+        
+        <a routerLink="/home"><img src="NEASC_logo.png" /></a>   
     </nav>
+
     <a routerLink="/coach-portal"><button class="coachPortal" mat-raised-button color="primary">Coach's Portal</button></a>
 </header>

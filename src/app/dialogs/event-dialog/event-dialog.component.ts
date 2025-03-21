@@ -4,11 +4,12 @@ import { Inject } from '@angular/core';
 import { EventModel } from '../../models/event.model';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-event-dialog',
   standalone: true,
-  imports: [MatButtonModule, MatDialogModule],
+  imports: [MatButtonModule, MatDialogModule, MatIconModule],
   templateUrl: './event-dialog.component.html',
   styleUrl: './event-dialog.component.css'
 })
