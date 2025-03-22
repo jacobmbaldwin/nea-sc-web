@@ -1,0 +1,18 @@
+.faqContainer {
+  margin: 2rem 20%;
+}
+
+mat-panel-title {
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+mat-expansion-panel {
+    padding: 1rem;
+}
