@@ -1,1 +1,175 @@
-<p>scholarships works!</p>
+<app-small-header-banner
+  [heading]="'NEA SC Scholarship Fund'"
+  [imagePath]="'small-header-banners/soccer-ball-banner.png'"
+></app-small-header-banner>
+
+<div class="page">
+    <h2>Donate to the Scholarship Fund</h2>
+    <div class="aboutSection">
+      <p>
+        At NEA Soccer Club, we believe that ALL players should have access to club
+        soccer. That is why we created the NEA SC Scholarship Fund. We are asking
+        anyone who is able and willing to donate to the fund so that we can provide
+        this access.
+      </p>
+      <p>
+        <strong> Your donations would enable us to: </strong>
+      </p>
+      <ul>
+        <li>
+          Support financially-challenged families by providing scholarships for kids
+          to play soccer
+        </li>
+        <li>Provide equipment for training players and building soccer fields</li>
+        <li>
+          Promote soccer as a way to keep kids involved in a positive environment
+        </li>
+      </ul>
+      <button mat-raised-button color="primary">
+        Donate Today!
+      </button>
+    </div>
+
+    <h2>Apply for a Scholarship</h2>
+    <p>
+        Fill out the form below to apply for a scholarship. Scholarships are awarded
+        based on financial need and availability of funds.
+    </p>
+
+    <mat-stepper orientation="vertical" linear="true" animationDuration="1000" #stepper>
+
+        <mat-step [stepControl]="identityGroupForm">
+            <form [formGroup]="identityGroupForm">
+                <ng-template matStepLabel>Identity</ng-template>
+                <div class="row">
+                  <mat-form-field>
+                      <mat-label>First Name</mat-label>
+                      <input matInput placeholder="First Name" formControlName="firstName">
+                  </mat-form-field>
+                  <mat-form-field>
+                      <mat-label>Last Name</mat-label>
+                      <input matInput placeholder="Last Name" formControlName="lastName">
+                  </mat-form-field>
+                  <mat-form-field>
+                      <mat-label>Date of Birth</mat-label>
+                      <input matInput [matDatepicker]="picker" placeholder="Date of Birth" formControlName="birthDate">
+                      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+
+                <mat-label>Gender</mat-label>
+                <mat-radio-group matInput formControlName="gender" aria-label="Select an option">
+                  <mat-radio-button value="male">Male</mat-radio-button>
+                  <mat-radio-button value="female">Female</mat-radio-button>
+                  <mat-radio-button value="preferNot">Prefer Not to Say</mat-radio-button>
+                </mat-radio-group>
+                <div class="buttonRow"><button mat-raised-button matStepperNext>Next</button></div>
+            </form>
+        </mat-step>
+
+        <mat-step [stepControl]="addressGroupForm">
+            <form [formGroup]="addressGroupForm">
+                <ng-template matStepLabel>Address</ng-template>
+                <mat-form-field>
+                    <mat-label>Street Address</mat-label>
+                    <input matInput placeholder="Street Address" formControlName="street">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>City</mat-label>
+                    <input matInput placeholder="City" formControlName="city">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>State</mat-label>
+                    <input matInput placeholder="State" formControlName="state">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Zip Code</mat-label>
+                    <input matInput placeholder="Zip Code" formControlName="zip">
+                </mat-form-field>
+                <div class="buttonRow">
+                  <button mat-raised-button matStepperPrevious>Back</button>
+                  <button mat-raised-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+
+        <mat-step [stepControl]="contactGroupForm">
+            <form [formGroup]="contactGroupForm">
+                <ng-template matStepLabel>Contact Info</ng-template>
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Email" formControlName="email">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Phone Number</mat-label>
+                    <input matInput placeholder="Phone Number" formControlName="phone">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Parent/Guardian Name</mat-label>
+                    <input matInput placeholder="Parent/Guardian Name" formControlName="parentName">
+                </mat-form-field>
+                <div class="buttonRow">
+                  <button mat-raised-button matStepperPrevious>Back</button>
+                  <button mat-raised-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+
+        <mat-step [stepControl]="reasonsGroupForm">
+            <form [formGroup]="reasonsGroupForm">
+                <ng-template matStepLabel>Player Background</ng-template>
+                <mat-form-field>
+                    <mat-label>How long have you been playing soccer?</mat-label>
+                    <textarea matInput placeholder="Time Played" formControlName="timePlayed"></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Have you previously been registered with a soccer club? If yes, please provide details (club name, duration of registration, any achievements, etc.):</mat-label>
+                  <textarea matInput placeholder="Club History" formControlName="clubHistory"></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>What position(s) do you play? </mat-label>
+                  <textarea matInput placeholder="Positions Played" formControlName="positionsPlayed"></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Have you participated in any soccer tournaments or competitions? If yes, please provide details: </mat-label>
+                  <textarea matInput placeholder="Tournament History" formControlName="tournamentHistory"></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>What does soccer mean to you?</mat-label>
+                  <textarea matInput placeholder="Why Soccer?" formControlName="whySoccer"></textarea>
+                </mat-form-field>
+                <div class="buttonRow">
+                  <button mat-raised-button matStepperPrevious>Back</button>
+                  <button mat-raised-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+
+        <mat-step [stepControl]="householdGroupForm">
+            <form [formGroup]="householdGroupForm">
+                <ng-template matStepLabel>Household Information</ng-template>
+                <mat-form-field>
+                    <mat-label>Annual household income</mat-label>
+                    <input matInput placeholder="Annual Income" formControlName="householdIncome">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Number of dependents in household</mat-label>
+                    <input matInput placeholder="Household Size" formControlName="householdSize">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Please describe any financial challenges that would prevent you from registering with a soccer club:</mat-label>
+                    <textarea matInput placeholder="Financial Challenges" formControlName="financialChallenges"></textarea>
+                </mat-form-field>
+                <div class="buttonRow">
+                  <button mat-raised-button matStepperPrevious>Back</button>
+                  <button mat-raised-button >Submit</button>
+                </div>
+            </form>
+
+        </mat-step>
+        
+    </mat-stepper>
+
+</div>
+
