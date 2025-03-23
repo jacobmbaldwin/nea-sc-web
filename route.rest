@@ -1,0 +1,93 @@
+### USERS ###
+
+### - Get All Users - ###
+
+GET http://localhost:3000/users
+
+### - Get One User - ###
+GET http://localhost:3000/users/67df35a8562c9e80640d8983
+
+### - Create A User - ###
+
+POST http://localhost:3000/users/
+Content-Type: application/json
+
+
+{
+    "name": "John Doe",
+    "email": "me@me.com",
+    "password": "123456"
+}
+
+### - Delete A User - ###
+
+DELETE http://localhost:3000/users/67df35a8562c9e80640d8983
+
+### - Update A User - ###
+
+PATCH http://localhost:3000/users/67df3d63d93ee85270ba629f
+Content-Type: application/json
+
+{
+    "name": "Daniel Nau"
+}
+
+### SCHOLARSHIP REQUESTS ###
+
+GET http://localhost:3000/scholarshipRequests
+
+###
+
+GET http://localhost:3000/scholarshipRequests/67df4917d35a15cb50d41f4d
+
+###
+
+POST http://localhost:3000/scholarshipRequests
+Content-Type: application/json
+
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "birthDate": "01/01/2000",
+    "gender": "Male",
+    "street": "123 Main St",
+    "city": "Anytown",
+    "state": "CA",
+    "zip": "12345",
+    "email": "me@me.com",
+    "phone": "1234567890",
+    "parentName": "Jane Doe",
+    "timePlayed": "6 Years",
+    "clubHistory": "Revolution FC",
+    "positionsPlayed": "Midfield",
+    "tournamentHistory": "State Cup",
+    "whySoccer": "I love the game",
+    "householdIncome": "50000",
+    "householdSize": "4",
+    "financialChallenges": "None"
+}  
+
+### EVENTS ###
+
+GET http://localhost:3000/events
+
+###
+
+GET http://localhost:3000/events/67df4b3b1b3b1b3b1b3b1b3b
+
+###
+
+POST http://localhost:3000/events
+Content-Type: application/json
+
+{
+    "date": "2025-04-25T10:03:46.000Z",
+    "title": "Another Test Event",
+    "description": "Come join us for a bad day of soccer",
+    "location": "Yo Momma's House",
+    "time": "12:00 PM"
+}
+
+###
+
+DELETE http://localhost:3000/events/67df5feda6fa4a71fe8e968d

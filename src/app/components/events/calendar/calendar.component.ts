@@ -1,136 +1,80 @@
-import { Component, OnInit } from '@angular/core';
-import { CalendarService } from '../../../service/calendar.service'; 
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { Component } from '@angular/core';
+import { CalendarService } from '../../../service/calendar.service';
+import { EventModel } from '../../../models/event.model';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-import { CommonModule } from '@angular/common';
-import { EventModel } from '../../../models/event.model';
-import { MatDialogConfig } from '@angular/material/dialog';
-import { MatDialog } from '@angular/material/dialog';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { DatePipe } from '@angular/common';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
 import { EventDialogComponent } from '../../../dialogs/event-dialog/event-dialog.component';
-
-interface CalendarDay {
-  date: number;
-  events: EventModel[];
-  isPrevMonth?: boolean;
-  isCurrentMonth?: boolean;
-  isNextMonth?: boolean;
-}
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule, CommonModule, MatDialogModule],
+  imports: [MatButtonModule, MatIconModule, MatCardModule, MatToolbarModule, MatDialogModule, DatePipe],
   templateUrl: './calendar.component.html',
-  styleUrl: './calendar.component.css'
+  styleUrls: ['./calendar.component.css']
 })
-export class CalendarComponent implements OnInit {
-  month: number = new Date().getMonth() + 1;
-  year: number = new Date().getFullYear();
-  monthName: string = '';
-  days: CalendarDay[] = [];
-  weekDays: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+export class CalendarComponent {
+  currentDate: Date = new Date();
+  events: EventModel[] = [];
+  daysInMonth: number[] = [];
 
   constructor(
-    private calendarService: CalendarService,
+    private eventService: CalendarService,
+    private router: Router,
     private dialog: MatDialog
-  ) {}
-
-  ngOnInit() {
-    this.updateCalendar();
-  }
-
-  protected updateCalendar() {
-    const firstDayOfMonth = new Date(this.year, this.month - 1, 1);
-    const lastDayOfMonth = new Date(this.year, this.month, 0);
-    const firstDayIndex = firstDayOfMonth.getDay();
-    const numDays = lastDayOfMonth.getDate();
+  ) {
+    this.loadEvents();
+    this.generateCalendar();
   
-    this.monthName = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(firstDayOfMonth);
-  
-    let tempDays: CalendarDay[] = [];
-  
-    // 🔹 1. Get Previous Month Days
-    const prevMonth = this.month === 1 ? 12 : this.month - 1;
-    const prevYear = this.month === 1 ? this.year - 1 : this.year;
-    const prevMonthLastDate = new Date(this.year, this.month - 1, 0).getDate();
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.loadEvents();
+        this.generateCalendar();
+      }
+    });
     
-    for (let i = prevMonthLastDate - firstDayIndex + 1; i <= prevMonthLastDate; i++) {
-      tempDays.push({ date: i, events: [], isPrevMonth: true });
-    }
-  
-    // 🔹 2. Get Current Month Days
-    for (let i = 1; i <= numDays; i++) {
-      tempDays.push({ date: i, events: [], isCurrentMonth: true });
-    }
-  
-    // 🔹 3. Get Next Month Days (to fill full 6 rows)
-    const remainingDays = 42 - tempDays.length; // Ensure a 6-row grid
-    for (let i = 1; i <= remainingDays; i++) {
-      tempDays.push({ date: i, events: [], isNextMonth: true });
-    }
-
-    // 🔹 4. Fetch Events for Current, Previous, and Next Month
-    this.calendarService.getEvents(this.month, this.year).subscribe(events => {
-      this.assignEvents(tempDays, events, true);
-    });
-
-    this.calendarService.getEvents(prevMonth, prevYear).subscribe(events => {
-      this.assignEvents(tempDays, events, false, true);
-    });
-
-    this.calendarService.getEvents(this.month === 12 ? 1 : this.month + 1, this.month === 12 ? this.year + 1 : this.year).subscribe(events => {
-      this.assignEvents(tempDays, events, false, false, true);
-    });
-
-    this.days = tempDays;
   }
 
-  protected assignEvents(days: CalendarDay[], events: EventModel[], isCurrent = false, isPrev = false, isNext = false) {
-    events.forEach(event => {
-      const day = days.find(d => d.date === event.day && (
-        (isCurrent && d.isCurrentMonth) ||
-        (isPrev && d.isPrevMonth) ||
-        (isNext && d.isNextMonth)
-      ));
-      if (day) day.events.push(event);
+  loadEvents(): void {
+    this.eventService.getEvents().subscribe(events => {
+      this.events = events;
     });
   }
 
-  protected prevMonth() {
-    if (this.month === 1) {
-      this.month = 12;
-      this.year--;
-    } else {
-      this.month--;
-    }
-    this.updateCalendar();
+  generateCalendar(): void {
+    const year = this.currentDate.getFullYear();
+    const month = this.currentDate.getMonth();
+    const days = new Date(year, month + 1, 0).getDate();
+    this.daysInMonth = Array.from({ length: days }, (_, i) => i + 1);
   }
 
-  protected nextMonth() {
-    if (this.month === 12) {
-      this.month = 1;
-      this.year++;
-    } else {
-      this.month++;
-    }
-    this.updateCalendar();
+  changeMonth(offset: number): void {
+    this.currentDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + offset, 1);
+    this.generateCalendar();
+  }
+
+  getEventsForDate(day: number): EventModel[] {
+    const dateString = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), day).toDateString();
+    return this.events.filter(event => new Date(event.date).toDateString() === dateString);
   }
 
   protected onOpenEvent(event: EventModel) {
     
-    const config: MatDialogConfig = {
-      data: event,
-      width: '90%',
-      maxWidth: '500px',
-      disableClose: false,
-      autoFocus: true,
-      hasBackdrop: true
-    };
-
-    this.dialog.open(EventDialogComponent, config);
+        const config: MatDialogConfig = {
+          data: event,
+          width: '90%',
+          maxWidth: '500px',
+          disableClose: false,
+          autoFocus: true,
+          hasBackdrop: true
+        };
     
-  }
+        this.dialog.open(EventDialogComponent, config);
+        
+      }
 }

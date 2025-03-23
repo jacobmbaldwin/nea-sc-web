@@ -1,7 +1,5 @@
 export interface EventModel {
-    month: number;
-    day: number;
-    year: number;
+    date: Date,
     title: string;
     description?: string;
     location: string;

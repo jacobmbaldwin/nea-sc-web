@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { EventService, EventData } from '../../../service/events.service';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -16,7 +15,6 @@ export class AddEventComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private eventService: EventService,
   ) {
 
     this.eventForm = this.formBuilder.group({
@@ -29,12 +27,7 @@ export class AddEventComponent {
   }
 
   onSubmit(): void {
-    if (this.eventForm.valid) {
-      const newEvent: EventData = this.eventForm.value;
-      this.eventService.addEvent(newEvent).then(()=> {
-        console.log('Event added!');
-      })
-    }
+    
   }
 
 }
