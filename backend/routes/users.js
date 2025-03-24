@@ -22,7 +22,8 @@ router.post('/', async (req, res) => {
     const user = new User({
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        accessLevel: req.body.accessLevel
     });
 
     try {
@@ -43,6 +44,9 @@ router.patch('/:id', getUser, async (req, res) => {
     }
     if (req.body.password != null) {
         res.user.password = req.body.password;
+    }
+    if (req.body.accessLevel != null) {
+        res.user.password = req.body.accessLevel;
     }
     try {
         const updatedUser = await res.user.save();

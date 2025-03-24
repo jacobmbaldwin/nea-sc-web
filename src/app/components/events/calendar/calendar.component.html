@@ -8,11 +8,19 @@
       </mat-toolbar>
     </div>
 
+    <!-- <div class="calendarWeekdays">
+      @for (weekday of weekDays; track weekday) {
+        <div class="calendarDay">
+          <strong>{{ weekday }}</strong>
+        </div>
+      }
+    </div> -->
     <div class="calendar-grid">
-      @for (day of daysInMonth; track day) {
-        <div class="calendar-day">
+
+      @for (day of daysInMonth; track day; let i = $index) {
+        <div class="calendar-day" >
           <span class="day-number">{{ day }}</span>
-          @for (event of getEventsForDate(day); track event) {
+          @for (event of getEventsForDate(day); track trackByEvent) {
             <mat-card class="event-card" (click)="onOpenEvent(event)">
               <strong>{{ event.title }}</strong>
               @if(event.time) {

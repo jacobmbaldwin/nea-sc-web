@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "BRUNO_NEA SC",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

@@ -9,7 +9,6 @@ import { DatePipe } from '@angular/common';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
 import { EventDialogComponent } from '../../../dialogs/event-dialog/event-dialog.component';
-import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-calendar',
@@ -22,21 +21,16 @@ export class CalendarComponent {
   currentDate: Date = new Date();
   events: EventModel[] = [];
   daysInMonth: number[] = [];
+  weekDays: string[] = ['SUN', 'MON', 'TUES', 'WED', 'THURS', 'FRI', 'SAT'];
+  emptyCells: number;
 
   constructor(
     private eventService: CalendarService,
-    private router: Router,
     private dialog: MatDialog
   ) {
     this.loadEvents();
     this.generateCalendar();
-  
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.loadEvents();
-        this.generateCalendar();
-      }
-    });
+    this.emptyCells = 0;
     
   }
 
@@ -49,8 +43,20 @@ export class CalendarComponent {
   generateCalendar(): void {
     const year = this.currentDate.getFullYear();
     const month = this.currentDate.getMonth();
+
+    // Get the number of days in the month
     const days = new Date(year, month + 1, 0).getDate();
     this.daysInMonth = Array.from({ length: days }, (_, i) => i + 1);
+
+    // Get the weekday of the 1st day of the month
+    const firstDay = new Date(year, month, 1).getDay(); // 0 = Sunday, 1 = Monday, etc.
+
+    // Calculate the number of empty cells before the first day of the month
+    this.emptyCells = firstDay;
+  }
+  
+  isEmptyCell(index: number): boolean {
+    return index < this.emptyCells;
   }
 
   changeMonth(offset: number): void {
@@ -76,5 +82,9 @@ export class CalendarComponent {
     
         this.dialog.open(EventDialogComponent, config);
         
+      }
+
+      trackByEvent(index: number, event: EventModel): string {
+        return `${event.title}-${event.date}`;
       }
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { SmallHeaderBannerComponent } from "../shared/small-header-banner/small-header-banner.component";
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
-import { FormBuilder, Validators, FormsModule, ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
+import { Validators, FormsModule, ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
@@ -35,7 +35,6 @@ export class ScholarshipsComponent {
   householdGroupForm: FormGroup;
 
   constructor(
-    private fb: FormBuilder,
   ) { 
 
     this.identityGroupForm = new FormGroup({

@@ -8,10 +8,11 @@
     padding-bottom: 2rem
 }
 
-.dialogWrapper>div {
+.eventDetails {
     display: flex;
     flex-direction: column;
     gap: .25rem;
+    padding: 0 3rem;
 }
 
 .row {

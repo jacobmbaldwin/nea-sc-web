@@ -16,7 +16,8 @@ Content-Type: application/json
 {
     "name": "John Doe",
     "email": "me@me.com",
-    "password": "123456"
+    "password": "123456",
+    "accessLevel": 0
 }
 
 ### - Delete A User - ###
@@ -25,7 +26,7 @@ DELETE http://localhost:3000/users/67df35a8562c9e80640d8983
 
 ### - Update A User - ###
 
-PATCH http://localhost:3000/users/67df3d63d93ee85270ba629f
+PATCH http://localhost:3000/users/67e09330699c7c88905bfcee
 Content-Type: application/json
 
 {
@@ -81,11 +82,11 @@ POST http://localhost:3000/events
 Content-Type: application/json
 
 {
-    "date": "2025-04-25T10:03:46.000Z",
+    "date": "2025-08-16T10:03:46.000Z",
     "title": "Another Test Event",
-    "description": "Come join us for a bad day of soccer",
-    "location": "Yo Momma's House",
-    "time": "12:00 PM"
+    "description": "Come join us for an epic day of soccer",
+    "location": "The Spot",
+    "time": "12:01 PM"
 }
 
 ###

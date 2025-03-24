@@ -1,0 +1,21 @@
+meta {
+  name: Update A User
+  type: http
+  seq: 5
+}
+
+patch {
+  url: PATCH http://localhost:3000/users/{{userId}}
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "name": "Daniel Nau"
+  }
+}
+
+vars:pre-request {
+  userId: 67e09330699c7c88905bfcee
+}

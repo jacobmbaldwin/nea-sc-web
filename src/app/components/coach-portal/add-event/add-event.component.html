@@ -1,11 +1,30 @@
+<form [formGroup]="eventForm">
+    <mat-form-field>
+        <mat-label>Event Date</mat-label>
+        <input matInput [matDatepicker]="picker" placeholder="Date of Event" formControlName="date">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
 
-<h2>Add to Upcoming Events</h2>
-<form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+        <mat-label>Event Title</mat-label>
+        <input matInput placeholder="Event Title" formControlName="title">
+    </mat-form-field>
 
-    <input formControlName="date" placeholder="Date" required />
-    <input formControlName="venue" placeholder="Venue" required />
-    <input formControlName="city" placeholder="City" required />
-    <input formControlName="time" placeholder="Time" required />
-    <button type="submit">Add Event</button>
+    <mat-form-field>
+        <mat-label>Event Description</mat-label>
+        <input matInput placeholder="Event Description" formControlName="description">
+    </mat-form-field>
 
+    <mat-form-field>
+        <mat-label>Event Location</mat-label>
+        <input matInput placeholder="Event Location" formControlName="location">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Event Time</mat-label>
+        <input matInput placeholder="Event Time" formControlName="time">
+    </mat-form-field>
+
+    <button mat-raised-button (click)="onSubmit()">Submit</button>
 </form>

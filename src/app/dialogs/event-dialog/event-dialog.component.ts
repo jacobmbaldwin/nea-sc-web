@@ -5,6 +5,7 @@ import { EventModel } from '../../models/event.model';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { CalendarService } from '../../service/calendar.service';
 
 @Component({
   selector: 'app-event-dialog',
@@ -14,11 +15,15 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './event-dialog.component.css'
 })
 export class EventDialogComponent {
+  formattedDate: string;
 
   constructor(
     private dialogRef: MatDialogRef<EventDialogComponent>,
+    private calendarService: CalendarService,
     @Inject(MAT_DIALOG_DATA) public data: EventModel
-  ) { }
+  ) { 
+    this.formattedDate = calendarService.formatDate(data.date);
+  }
 
   onClose(): void {
     this.dialogRef.close();

@@ -2,13 +2,12 @@
     width: 100%;
     margin: 2rem 0;
     border-radius: 35px;
-    padding: 1rem;
+    padding: 0 1rem;
   }
   
   mat-toolbar {
     display: flex;
     justify-content: space-between;
-    padding: 3rem;
     background: #fff;
     border-radius: 35px;
   }
@@ -23,6 +22,23 @@
     grid-template-columns: repeat(7, 1fr);
     gap: 5px;
     padding: 10px;
+  }
+
+  .calendarWeekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 columns for weekdays */
+    gap: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    color: #CF2031;
+  }
+
+  .calendar-day.empty {
+    visibility: hidden;  /* Hides the empty cell, so it takes up space but doesn't show anything */
+  }
+  
+  .calendar-day.empty .day-number {
+    visibility: hidden;  /* Ensures the day number is hidden for empty cells */
   }
   
   .calendar-header {
