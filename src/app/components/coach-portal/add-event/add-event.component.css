@@ -20,3 +20,7 @@ h2 {
     padding: 1.5rem 1rem;
     margin: 0;
 }
+
+button {
+  font-size: 18px;
+}

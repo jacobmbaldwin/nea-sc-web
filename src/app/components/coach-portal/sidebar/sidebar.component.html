@@ -1,8 +1,8 @@
 <div class="sidebarWrapper">
   <h2>Portal Functions</h2>
-  <h3 (click)="onScholarshipRequests()">Scholarship Requests <mat-icon>school</mat-icon></h3>
-  <h3 (click)="onViewDocuments()">View Documents <mat-icon>folder</mat-icon></h3>
-  <h3 (click)="onAddEvent()">Add Event <mat-icon>add</mat-icon></h3>
-  <h3 (click)="onViewRosters()">View Rosters <mat-icon>groups</mat-icon></h3>
-  <h3 (click)="onClubContacts()">Club Contacts <mat-icon>contacts</mat-icon></h3>
+  <h3 (click)="onScholarshipRequests()" [class.active]="scholarshipRequestsIsActive">Scholarship Requests <mat-icon>school</mat-icon></h3>
+  <h3 (click)="onViewDocuments()" [class.active]="viewDocumentsIsActive">View Documents <mat-icon>folder</mat-icon></h3>
+  <h3 (click)="onAddEvent()" [class.active]="addEventIsActive">Add Event <mat-icon>add</mat-icon></h3>
+  <h3 (click)="onViewRosters()" [class.active]="viewRostersIsActive">View Rosters <mat-icon>groups</mat-icon></h3>
+  <h3 (click)="onClubContacts()" [class.active]="clubContactsIsActive">Club Contacts <mat-icon>contacts</mat-icon></h3>
 </div>
