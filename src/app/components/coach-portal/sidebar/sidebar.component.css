@@ -1,0 +1,37 @@
+.sidebarWrapper {
+    background-color: #fff;
+    height: 100%;
+}
+
+.sidebarWrapper *:not(h2, mat-icon) {
+    padding: 1.5rem 1rem;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: .5px #D9D9D9 solid;
+}
+
+.sidebarWrapper *:not(h2):hover {
+    background-color: #D9D9D9;
+    cursor: pointer;
+}
+
+.sidebarWrapper mat-icon {
+    padding: 0;
+    color: #CF2031;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 1.5rem 1rem;
+    background-color: #221F1F;
+    color: #fff;
+    font-size: 28px;
+}
+
+h3, .sidebarWrapper mat-icon {
+    font-size: 24px;
+}

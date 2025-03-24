@@ -1,6 +1,17 @@
 form {
     display: flex;
     flex-direction: column;
-    max-width: 500px;
+    width: 100%;
+    max-width: 50%;
+    margin: auto;
+}
+
+.page {
     margin: 1rem;
+    width: 100%;
+}
+
+h2 {
+    text-align: center;
+    font-size: 28px;
 }
