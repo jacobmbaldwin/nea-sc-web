@@ -9,9 +9,14 @@ form {
 .page {
     margin: 1rem;
     width: 100%;
+    padding-top: 2rem;
 }
 
 h2 {
     text-align: center;
     font-size: 28px;
+    background-color: #CF2031;
+    color: #fff;
+    padding: 1.5rem 1rem;
+    margin: 0;
 }

@@ -4,9 +4,27 @@
 />
 <div class="page">
   <div class="sidebar">
-    <app-sidebar />
+    <app-sidebar (isActiveChange)="handleActiveChange($event)" />
   </div>
   <div class="dashboard">
-    <app-add-event />
+    @if (isActive === 'default') {
+      <app-dashboard />
+    }
+    @if (isActive === 'addEvent') {
+      <app-add-event />
+    }
+    @if (isActive === 'scholarshipRequests') {
+      <app-scholarship-requests />
+    }
+    @if (isActive === 'viewDocuments') {
+      <app-coach-documents />
+    }
+    @if (isActive === 'viewRosters') {
+      <app-view-rosters />
+    }
+    @if (isActive === 'clubContacts') {
+      <app-club-contacts />
+    }
+
   </div>
 </div>
