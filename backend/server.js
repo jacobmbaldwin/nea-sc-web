@@ -22,4 +22,7 @@ app.use('/scholarshipRequests', scholarshipRequestsRouter);
 const eventsRouter = require('./routes/events');
 app.use('/events', eventsRouter);
 
+const portalDocumentsRouter = require('./routes/portalDocuments');
+app.use('/portalDocuments', portalDocumentsRouter);
+
 app.listen(3000, () =>  console.log('Server Started') );
