@@ -1,0 +1,28 @@
+.dialogWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  height: 100%;
+  width: 100%;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: .25rem;
+  padding: 1rem;
+}
+
+.item * {
+  margin: 0;
+  padding: 0;
+}
+
+.item p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px
+}

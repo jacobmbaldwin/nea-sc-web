@@ -7,10 +7,6 @@ import { FaqModel } from '../models/faq.model';
 export class FaqService {
     private faqList: FaqModel[] = [
         {
-            question: 'Is NEA Soccer Club a “real” club?',
-            answer: 'Yes. We are registered with the Arkansas Soccer Association and are one of three soccer clubs in Northeast Arkansas.'
-        },
-        {
             question: 'Will NEA SC be doing outdoor soccer?',
             answer: 'Yes. We are registering players for tryouts now and will be playing full-sided soccer in Spring 2024 to complete the 2023/24 season.'
         },

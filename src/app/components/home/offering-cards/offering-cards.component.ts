@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { OfferingsService } from '../../../service/offerings.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import {OfferingModel} from "../../../models/offering.model";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {OfferingDialogComponent} from "../../../dialogs/offering-dialog/offering-dialog.component";
 
 @Component({
   selector: 'app-offering-cards',
@@ -14,22 +17,29 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './offering-cards.component.css'
 })
 export class OfferingCardsComponent {
-  protected offerings: {
-    title: string;
-    description: string;
-    image: string;
-    link: string;
-  }[];
+  protected offerings: OfferingModel[];
 
   constructor(
     protected offeringsService: OfferingsService,
+    private dialog: MatDialog
   ) {
 
     this.offerings = this.offeringsService.getOfferings();
 
   }
 
-  protected onMoreDetails(url: string): void {
-    console.log(url);
+  protected onMoreDetails(offering: OfferingModel): void {
+    // Open a dialog with more details about the offering
+    const config: MatDialogConfig = {
+      data: offering,
+      width: '90%',
+      maxWidth: '800px',
+      disableClose: false,
+      autoFocus: true,
+      hasBackdrop: true
+    };
+
+    this.dialog.open(OfferingDialogComponent, config);
+
   }
 }

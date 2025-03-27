@@ -21,11 +21,11 @@ export class EventDialogComponent {
     private dialogRef: MatDialogRef<EventDialogComponent>,
     private calendarService: CalendarService,
     @Inject(MAT_DIALOG_DATA) public data: EventModel
-  ) { 
+  ) {
     this.formattedDate = calendarService.formatDate(data.date);
   }
 
-  onClose(): void {
+  protected onClose(): void {
     this.dialogRef.close();
   }
 
