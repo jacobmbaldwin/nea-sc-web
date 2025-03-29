@@ -25,7 +25,7 @@ export class CalendarService {
   }
 
   postEvent(event: EventModel): Observable<EventModel> {
-    return this.http.post<EventModel>(this.eventsDataUrl, event)
+    return this.http.post<EventModel>(this.eventsDataUrl, event);
   }
 
   formatDate(date: Date): string {

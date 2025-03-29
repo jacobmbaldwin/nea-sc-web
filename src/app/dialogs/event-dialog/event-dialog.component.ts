@@ -22,7 +22,7 @@ export class EventDialogComponent {
     private calendarService: CalendarService,
     @Inject(MAT_DIALOG_DATA) public data: EventModel
   ) {
-    this.formattedDate = calendarService.formatDate(data.date);
+    this.formattedDate = this.calendarService.formatDate(data.date);
   }
 
   protected onClose(): void {

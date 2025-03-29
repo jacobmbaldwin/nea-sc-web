@@ -36,10 +36,10 @@
         based on financial need and availability of funds.
     </p>
 
-    <mat-stepper orientation="vertical" linear="true" animationDuration="1000" #stepper>
+    <mat-stepper [formGroup]="scholarshipForm" orientation="vertical" linear="true" animationDuration="1000" #stepper>
 
-        <mat-step [stepControl]="identityGroupForm">
-            <form [formGroup]="identityGroupForm">
+        <mat-step [stepControl]="getFormGroup('identity')">
+            <form formGroupName="identity">
                 <ng-template matStepLabel>Identity</ng-template>
                 <div class="row">
                   <mat-form-field>
@@ -60,16 +60,16 @@
 
                 <mat-label>Gender</mat-label>
                 <mat-radio-group matInput formControlName="gender" aria-label="Select an option">
-                  <mat-radio-button value="male">Male</mat-radio-button>
-                  <mat-radio-button value="female">Female</mat-radio-button>
+                  <mat-radio-button value="Male">Male</mat-radio-button>
+                  <mat-radio-button value="Female">Female</mat-radio-button>
                   <mat-radio-button value="preferNot">Prefer Not to Say</mat-radio-button>
                 </mat-radio-group>
                 <div class="buttonRow"><button mat-raised-button matStepperNext>Next</button></div>
             </form>
         </mat-step>
 
-        <mat-step [stepControl]="addressGroupForm">
-            <form [formGroup]="addressGroupForm">
+        <mat-step [stepControl]="getFormGroup('address')">
+            <form formGroupName="address">
                 <ng-template matStepLabel>Address</ng-template>
                 <mat-form-field>
                     <mat-label>Street Address</mat-label>
@@ -94,8 +94,8 @@
             </form>
         </mat-step>
 
-        <mat-step [stepControl]="contactGroupForm">
-            <form [formGroup]="contactGroupForm">
+        <mat-step [stepControl]="getFormGroup('contact')">
+            <form formGroupName="contact">
                 <ng-template matStepLabel>Contact Info</ng-template>
                 <mat-form-field>
                     <mat-label>Email</mat-label>
@@ -116,8 +116,8 @@
             </form>
         </mat-step>
 
-        <mat-step [stepControl]="reasonsGroupForm">
-            <form [formGroup]="reasonsGroupForm">
+        <mat-step [stepControl]="getFormGroup('reasons')">
+            <form formGroupName="reasons">
                 <ng-template matStepLabel>Player Background</ng-template>
                 <mat-form-field>
                     <mat-label>How long have you been playing soccer?</mat-label>
@@ -146,8 +146,8 @@
             </form>
         </mat-step>
 
-        <mat-step [stepControl]="householdGroupForm">
-            <form [formGroup]="householdGroupForm">
+        <mat-step [stepControl]="getFormGroup('household')">
+            <form formGroupName="household">
                 <ng-template matStepLabel>Household Information</ng-template>
                 <mat-form-field>
                     <mat-label>Annual household income</mat-label>
@@ -163,7 +163,7 @@
                 </mat-form-field>
                 <div class="buttonRow">
                   <button mat-raised-button matStepperPrevious>Back</button>
-                  <button mat-raised-button >Submit</button>
+                  <button mat-raised-button (click)="onSubmit()">Submit</button>
                 </div>
             </form>
 

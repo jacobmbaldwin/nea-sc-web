@@ -62,4 +62,16 @@ router.delete('/:id', getPortalDocument, async (req, res) => {
     }
 });
 
+async function getPortalDocument(req, res, next) {
+    let portalDocument;
+    try {
+        portalDocument = await PortalDocument.findById(req.params.id);
+        if (portalDocument == null) {
+            return res.status(404).json({ message: 'Cannon find document' });
+        }
+    } catch (err) {
+        return res.status(500).json({ message: err.message })
+    }
+}
+
 module.exports = router;

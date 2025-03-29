@@ -15,3 +15,11 @@ p {
   margin: 0;
 
 }
+
+th {
+  font-size: 18px;
+}
+
+td {
+  font-family: 'Open Sans', sans-serif;
+}

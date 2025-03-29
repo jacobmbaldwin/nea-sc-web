@@ -47,10 +47,10 @@ POST http://localhost:3000/scholarshipRequests
 Content-Type: application/json
 
 {
-    "firstName": "John",
+    "firstName": "Jane",
     "lastName": "Doe",
-    "birthDate": "01/01/2000",
-    "gender": "Male",
+    "birthDate": "01/15/2013",
+    "gender": "Female",
     "street": "123 Main St",
     "city": "Anytown",
     "state": "CA",
